@@ -27,6 +27,7 @@ int main(int argc, char** argv) {
   int r = atoi(argv[1]);
   int s = atoi(argv[2]);
   printf("Inputs : %d %d\n", r, s);
+  printf("Integer type size : %ld\n", sizeof(int));
   long long sum = 0;
   long long min = 1L << 32;
   long long max = -1;
