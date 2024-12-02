@@ -1,2 +1,4 @@
 *.class
 c/alloc
+c/class
+*.swp
