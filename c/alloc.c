@@ -10,9 +10,10 @@ long long time_ms()
     return ms;
 }
 
+int e = 0;
+
 int run (int r, int s) {
   long long start = time_ms();
-  int e = 0;
   for(int i = 0; i < r; i++) {
     int* p = (int*)malloc(sizeof(int) * s);
     e += p[0];
@@ -39,5 +40,5 @@ int main(int argc, char** argv) {
     sum += t;
   }
   double avg = ((double)sum) / ts;
-  printf("Min : %lld, max : %lld, average : %f\n", min, max, avg);
+  printf("Min : %lld, max : %lld, average : %f, e : %d\n", min, max, avg, e);
 }
