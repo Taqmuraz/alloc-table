@@ -1,10 +1,13 @@
 
 public class Alloc {
-  static long run (int r, int s) {
+  interface Allocator {
+    int[] allocate(int size);
+  }
+  static long run (int r, int s, Allocator a) {
     long start = System.currentTimeMillis();
     int e = 0;
     for (int i = 0; i < r; i++) {
-      int[] b = new int[s];
+      int[] b = a.allocate(s);
       e += b[0];
     }
     long end = System.currentTimeMillis();
@@ -20,7 +23,7 @@ public class Alloc {
     long max = -1;
     int ts = 10;
     for (int i = 0; i < ts; i++) {
-      long t = run(r, s);
+      long t = run(r, s, int[]::new);
       sum += t;
       if(t < min) min = t;
       if(t > max) max = t;
