@@ -1,11 +1,11 @@
 
 public class Alloc {
+  static int e;
   interface Allocator {
     int[] allocate(int size);
   }
   static long run (int r, int s, Allocator a) {
     long start = System.currentTimeMillis();
-    int e = 0;
     for (int i = 0; i < r; i++) {
       int[] b = a.allocate(s);
       e += b[0];
@@ -22,6 +22,11 @@ public class Alloc {
     long min = Long.MAX_VALUE;
     long max = -1;
     int ts = 10;
+    Allocator allocator = i -> {
+      int[] arr = new int[i];
+      arr[0] = 1;
+      return arr;
+    };
     for (int i = 0; i < ts; i++) {
       long t = run(r, s, int[]::new);
       sum += t;
@@ -29,6 +34,6 @@ public class Alloc {
       if(t > max) max = t;
     }
     double avg = ((double)sum) / ts;
-    System.out.printf("Min : %d, max : %d, average : %f\n", min, max, avg);
+    System.out.printf("Min : %d, max : %d, average : %f, e: %d\n", min, max, avg, e);
   }
 }
