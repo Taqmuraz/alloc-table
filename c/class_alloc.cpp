@@ -25,6 +25,7 @@ int run (int r, int s) {
   for(int i = 0; i < r; i++) {
     Person* p = new Person(s);
     e += p->age;
+    delete p;
   }
   long long end = time_ms();
   long long took = end - start;

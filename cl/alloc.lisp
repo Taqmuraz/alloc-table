@@ -5,10 +5,9 @@
 (defun test (r s)
   (let (
       (st (get-ms))
-      (e 0)
     )
     (loop for i from 0 to r do
-      (setf e (+ e (aref (make-array s) 0)))
+      (aref (make-array s) 0)
     )
     (- (get-ms) st)
   )
