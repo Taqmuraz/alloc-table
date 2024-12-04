@@ -26,3 +26,20 @@
     (test r s)
   ))
 )
+
+(defclass person () ((age :initarg :age :accessor get-age)))
+
+(defun person-test (r s)
+  (let ((st (get-ms)))
+    (loop for i from 0 to r do
+      (get-age (make-instance 'person :age s))
+    )
+    (- (get-ms) st)
+  )
+)
+
+(defun person-alloc-test (r s)
+  (stats (loop for i from 0 to 10 collect
+    (person-test r s)
+  ))
+)

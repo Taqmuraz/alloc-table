@@ -19,9 +19,9 @@ Allocating integer arrays
 | 2048 integers 100 000 times    | 0-223ms, ~26ms       | 216-1376ms, ~568ms | 299-339ms, ~307ms |
 
 Allocating instance of the class Person with one integer field.
-| test                                | Java 17 new Person(n)       | C++ G++ new Person(n)     | C++ with pseudo GC  |
-| --                                  | --                          | --                        | -- |
-| 100 000 instances        | 0-6ms, ~1.3ms        | 4-8ms, ~5ms        | 0-1ms, ~0.2ms |
-| 1 000 000 instances      | 0-11ms, ~2ms         | 43-69ms, ~47ms     | 1-3ms, ~1.1ms |
-| 1 000 000 000 instances  | 22-50ms, ~28ms       | out of memory        | 672-757ms, ~688ms |
+| test                                | Java 17 new Person(n)       | C++ G++ new Person(n)     | C++ with pseudo GC  | SBCL make-instance | SBCL (make-array 1) |
+| --                                  | --                          | --                        | -- | -- |
+| 100 000 instances        | 0-6ms, ~1.3ms        | 4-8ms, ~5ms        | 0-1ms, ~0.2ms | 0-12ms, ~5ms | 32-72ms, ~40ms | 326-343ms, 333ms |
+| 1 000 000 instances      | 0-11ms, ~2ms         | 43-69ms, ~47ms     | 1-3ms, ~1.1ms | 20-36ms, ~24ms |
+| 1 000 000 000 instances  | 22-50ms, ~28ms       | out of memory        | 672-757ms, ~688ms | ~30sec | ~51sec |
 
