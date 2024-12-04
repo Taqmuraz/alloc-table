@@ -19,15 +19,13 @@ long long time_ms()
     return ms;
 }
 
+int e = 0;
+
 int run (int r, int s) {
   long long start = time_ms();
-  int e = 0;
   for(int i = 0; i < r; i++) {
     Person* p = new Person(s);
     e += p->age;
-    delete p; // only to avoid `out of memory` error
-    // in fact, `delete` improves performance here
-    // almost twice
   }
   long long end = time_ms();
   long long took = end - start;
@@ -51,5 +49,5 @@ int main(int argc, char** argv) {
     sum += t;
   }
   double avg = ((double)sum) / ts;
-  printf("Min : %lld, max : %lld, average : %f\n", min, max, avg);
+  printf("Min : %lld, max : %lld, average : %f, e:%d\n", min, max, avg, e);
 }
