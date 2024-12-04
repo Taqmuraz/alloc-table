@@ -26,6 +26,7 @@ public:
     Person* h;
     if(peak < end) h = peak++;
     else h = peak = mem;
+    std::memset(h, 0, sizeof(Person));
     h->age = age;
     return h;
   }
